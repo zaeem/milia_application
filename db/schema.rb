@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141216124351) do
+ActiveRecord::Schema.define(version: 20141216093914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,11 +38,13 @@ ActiveRecord::Schema.define(version: 20141216124351) do
   create_table "sessions", force: true do |t|
     t.string   "session_id", null: false
     t.text     "data"
+    t.integer  "tenant_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", unique: true, using: :btree
+  add_index "sessions", ["tenant_id"], name: "index_sessions_on_tenant_id", using: :btree
   add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
 
   create_table "tasks", force: true do |t|
@@ -51,7 +53,6 @@ ActiveRecord::Schema.define(version: 20141216124351) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "account_id"
-    t.integer  "tenant_id"
   end
 
   create_table "tenants", force: true do |t|
@@ -65,7 +66,7 @@ ActiveRecord::Schema.define(version: 20141216124351) do
   add_index "tenants", ["tenant_id"], name: "index_tenants_on_tenant_id", using: :btree
 
   create_table "tenants_users", id: false, force: true do |t|
-    t.integer "tenant_id", null: false
+    t.integer "tenant_id"
     t.integer "user_id",   null: false
   end
 
@@ -74,6 +75,7 @@ ActiveRecord::Schema.define(version: 20141216124351) do
   create_table "users", force: true do |t|
     t.string   "email",                        default: "",    null: false
     t.string   "encrypted_password",           default: "",    null: false
+    t.integer  "tenant_id"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -87,7 +89,6 @@ ActiveRecord::Schema.define(version: 20141216124351) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.boolean  "skip_confirm_change_password", default: false
-    t.integer  "tenant_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -95,5 +96,6 @@ ActiveRecord::Schema.define(version: 20141216124351) do
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["tenant_id"], name: "index_users_on_tenant_id", using: :btree
 
 end

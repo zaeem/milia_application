@@ -5,10 +5,10 @@ class CreateMembers < ActiveRecord::Migration
       t.references :user, index: true
       t.string :first_name
       t.string :last_name
-      t.references :tenant
+      # t.references :tenant
       t.timestamps
     end
-    add_index :CreateMembers, :tenant_id
+    # add_index :CreateMembers, :tenant_id
 
   end
 end
