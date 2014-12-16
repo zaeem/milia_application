@@ -15,7 +15,7 @@ test:
 production:
   adapter: postgresql
   reconnect: false
-  database: mutitennat_app_db
+  # database: mutitennat_app_db
   pool: 1024
   # username: root
   # password: zaqxsw
