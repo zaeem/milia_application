@@ -13,7 +13,7 @@ test:
   username: postgres3
   password: postgres
 production:
-  adapter: mysql2
+  adapter: postgresql
   reconnect: false
   database: mutitennat_app_db
   pool: 1024
