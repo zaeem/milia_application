@@ -1,0 +1,14 @@
+%h1 Tasks#new
+%p Find me in app/views/tasks/new.html.haml
+%h1 Tasks#new
+%p Find me in app/views/tasks/new.html.erb
+= form_for @task do |f|
+  = f.label :task_name
+  \:
+  \#{f.text_field :task_name}
+  %br/
+  = f.label :task_description
+  \:
+  \#{f.text_field :description}
+  %br/
+  = f.submit
