@@ -1,7 +1,7 @@
 Rails.application.configure do
    
   # devise says to define default url
-  config.action_mailer.default_url_options = { :host => 'checkifyapp.com', :protocol => 'http' }
+  config.action_mailer.default_url_options = { :host => '*.checkifyapp.com', :protocol => 'http' }
 
   ActionMailer::Base.delivery_method = :smtp
 
