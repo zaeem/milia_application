@@ -1,7 +1,7 @@
 Rails.application.configure do
    
   # devise says to define default url
-  config.action_mailer.default_url_options = { :host => 'millia.herokuapp.com', :protocol => 'http' }
+  config.action_mailer.default_url_options = { :host => 'checkifyapp.com', :protocol => 'http' }
 
   ActionMailer::Base.delivery_method = :smtp
 
@@ -14,10 +14,6 @@ Rails.application.configure do
     :password => "helloworld81",
     # :enable_starttls_auto => true
   }
-
-  # Settings specified here will take precedence over those in config/application.rb.
-
-  # Code is not reloaded between requests.
   config.cache_classes = true
 
   # Eager load code on boot. This eager loads most of Rails and
